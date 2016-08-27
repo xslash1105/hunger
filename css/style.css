@@ -160,6 +160,10 @@ header{
     top: -6px;
     left: 50px;
   }
+
+  #headerUser{
+    display: none;
+  }
 }
 
 @media screen and (min-width: 1001px){
@@ -186,6 +190,13 @@ header{
 #headerTitle a{
   color: #ffffff;
   cursor: pointer;
+}
+
+#headerUser h3{
+  height: 50px;
+  padding: 11px 0  0;
+  float: left;
+  margin: 0 5px 0;
 }
 
 @media screen and (max-width: 768px){
@@ -285,13 +296,29 @@ signupModelWrapper
   display: none;
 }
 
+.message{
+  height: 400px;
+  margin: 100px auto;
+  padding: 100px 50px;
+}
+
+.required::before{
+  content: " ";
+}
+.required{
+  color: red;
+}
+
+.ok{
+  color: green;
+}
 /*@media screen and (min-width: 768px){*/
   #signupModel{
     height: auto;
-    width: 500px;
+    width: 600px;
     background: #ffffff;
-    margin: 60px auto 0;
-    padding: 25px 30px 30px;
+    margin: 20px auto 0;
+    padding: 15px 30px 10px;
     border-radius: 5px;
     font-size: 20px;
     position: relative;
@@ -426,6 +453,40 @@ loginModelWrapper
   color: red;
 }
 
+/*--------------------------------------
+register Check
+*/
+
+#registerSuccessContainer{
+  height: 400px;
+  width: 100%;
+}
+
+#registerSuccessContainer table{
+  width: 100%;
+}
+
+#registerSuccessContainer input{
+  height: 30px;
+  width: 100%;
+  border: none;
+}
+
+#registerSuccessContainer td{
+  padding: 10px 0;
+}
+
+#passwordCheckButton{
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+}
+
+#signupCheckButtonContainer button{
+  width: 90%;
+  margin: auto;
+}
+
 /*---------------------------------------
 footer.php
 */
@@ -480,7 +541,7 @@ main.php
 }
 
 #mainBackground{
-  height: 720px;
+  height: 650px;
   width: 100%;
   background: url("../img/background1.jpeg") no-repeat;
   background-size: cover;

@@ -4,7 +4,7 @@ $(document).ready(function(){
   $(document).on("click", ".signupOpen", function(){
     $("#signupModelWrapper").fadeIn(500);
   })
-  $("#closeSignup").click(function(){
+  $(document).on("click", "#closeSignup", function(){    
     $("#signupModelWrapper").fadeOut(500);
   })
 
@@ -87,5 +87,101 @@ $(document).ready(function(){
   }, function(){
     $(this).find("h4").slideUp("slow");
   })
+
+
+  $("#signupButton").click(function(){
+    var fname = $("input[name='signfname']").val();
+    var lname = $("input[name='signlname']").val();
+    var phone = $("input[name='signphone']").val();
+    var email = $("input[name='signemail']").val();
+    var password = $("input[name='signPass']").val();
+    if(fname=="" || lname=="" || phone=="" || email=="" || password==""){
+      if(fname==""){
+        $("#signupFnameCheck").html("required").addClass("required");
+      }
+      if(lname==""){
+        $("#signupLnameCheck").html("required").addClass("required");
+      }
+      if(phone==""){
+        $("#signupPhoneCheck").html("required").addClass("required");
+      }
+      if(email==""){
+        $("#signupEmailCheck").html("required").addClass("required");
+      }
+      if(password==""){
+        $("#signupPassCheck").html("required").addClass("required");
+      }
+    }
+    else
+    {
+      alert("ff");
+      var register = "register";
+      $.ajax({
+        type: "POST",
+        url: "sql/signupSQL.php",
+        dataType: "text",
+        data: {register:register, fname:fname, lname:lname, phone:phone, email:email, password:password},
+        beforesend: function(){
+          $("#signupModel").html("loading....");
+        },
+        success: function(result){
+          $("#signupModel").html(result);
+        }
+      });
+    }
+  })
+
+  $("input[name='signphone']").focusout(function(){
+    var phone = $("input[name='signphone']").val();
+    var phoneCheck = "phoneCheck";
+    if($.isNumeric(phone)){
+      $.ajax({
+        url: 'sql/signupSQL.php',
+        type: "POST",
+        dataType: "text",
+        data: {phoneCheck:phoneCheck, phone: phone},
+        beforesend: function(){
+          $("#signupPhoneCheck").html("checking...");
+        },
+        success: function(result){
+          $("#signupPhoneCheck").html(result);
+        }
+      })
+    }else{
+      $("#signupPhoneCheck").html('please enter a number').addClass("required");
+    }
+  })
+
+  $("input[name='signemail']").focusout(function(){
+    var email = $("input[name='signemail']").val();
+    var emailCheck = "emailCheck";
+    if(email.length>0){
+      $.ajax({
+        url: 'sql/signupSQL.php',
+        type: "POST",
+        dataType: "text",
+        data: {emailCheck:emailCheck, email: email},
+        beforesend: function(){
+          $("#signupEmailCheck").html("checking...");
+        },
+        success: function(result){
+          $("#signupEmailCheck").html(result);
+        }
+      })
+    }
+  })
+
+  $("input[name='signPass']").keyup(function(){
+    var password = $("input[name='signPass']").val();
+    if($("input[name='signPass']").hasClass('required')){
+      $("#signupPassCheck").removeClass("required");
+    }
+      if(password.length<8 && password.length>0){
+        $("#signupPassCheck").html("Enter more than 8 letters").addClass("required").removeClass("ok");
+      }else if(password.length>=8){
+        $("#signupPassCheck").html("").removeClass("required").addClass("ok glyphicon glyphicon-ok");
+      }
+  })
+
 
 })

@@ -1,0 +1,57 @@
+body{
+  font-family: 'Lobster', cursive;
+}
+
+button:focus{
+  outline: none;
+}
+
+.companyColor1{
+  color:  rgb(255, 153, 0);
+}
+
+.companyColor2{
+  color:  rgb(255, 173, 51);
+}
+
+.title{
+  border-bottom: 2px solid #eeeeee;
+}
+
+/*-------------------------------------
+menu.php
+*/
+
+header{
+  height: 50px;
+  width: 100%;
+  background: rgb(255, 173, 51);
+  z-index: 9;
+  position: fixed;
+  top: 0;
+}
+
+header h3{
+  text-align: center;
+}
+
+header a{
+  color: #fff;
+  cursor: pointer;
+}
+
+header a:hover{
+  color: #fff;
+}
+
+header ul{
+  float: right;
+}
+
+header li{
+  height: 50px;
+  width: auto;
+  min-width: 100px;
+  display: block;
+  float: left;
+}

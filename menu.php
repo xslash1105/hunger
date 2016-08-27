@@ -16,8 +16,6 @@
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="/js/jquery.bxslider.min.js"></script>
-    <link href="/css/jquery.bxslider.css" rel="stylesheet" />
   </head>
   <body>
     <?php
@@ -66,13 +64,17 @@
             <i class="glyphicon glyphicon-remove"></i>
           </div>
           <h2>Sign Up</h2>
-            <dt>Username:<span id="signupUserCheck" class="userCheck"></span></dt>
-            <dd><input type="text" name="username" placeholder="username" id="signupUser"></dd>
-            <dt>Email:<span class="emailCheck"></span></dt>
-            <dd><input type="email" name="email" placeholder="Email" id="signupEmail"></dd>
-            <dt>Password:</dt>
-            <dd><input type="password" name="password" placeholder="passoword" id="signupPass"><span class="passCheck"></span></dd>
-            <dt><button type="submit" id="signupButton">Sign Up</button></dt>
+            <dt>First name:<span id="signupFnameCheck"></span></dt>
+            <dd><input type="text" name="signfname" placeholder="username" id="signupUser"></dd>
+            <dt>Last name:<span id="signupLnameCheck"></span></dt>
+            <dd><input type="text" name="signlname" placeholder="username" id="signupUser"></dd>
+            <dt>Phone:<span id="signupPhoneCheck"></span></dt>
+            <dd><input type="text" name="signphone" placeholder="Phone number" id="signupPhone"></dd>
+            <dt>Email:<span id="signupEmailCheck"></span></dt>
+            <dd><input type="email" name="signemail" placeholder="Email" id="signupEmail"></dd>
+            <dt>Password:<span id="signupPassCheck"></span></dt>
+            <dd><input type="password" name="signPass" placeholder="passoword" id="signupPass" max="10"></dd>
+            <dt><button type="button" id="signupButton">Sign Up</button></dt>
         </dl>
       </div>
     </div>
