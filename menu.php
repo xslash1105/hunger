@@ -59,40 +59,44 @@
 
     <div id="signupModelWrapper">
       <div id="signupModel">
-        <dl>
           <div id="closeSignup" class="closeButton">
             <i class="glyphicon glyphicon-remove"></i>
           </div>
-          <h2>Sign Up</h2>
-            <dt>First name:<span id="signupFnameCheck"></span></dt>
-            <dd><input type="text" name="signfname" placeholder="username" id="signupUser"></dd>
-            <dt>Last name:<span id="signupLnameCheck"></span></dt>
-            <dd><input type="text" name="signlname" placeholder="username" id="signupUser"></dd>
-            <dt>Phone:<span id="signupPhoneCheck"></span></dt>
-            <dd><input type="text" name="signphone" placeholder="Phone number" id="signupPhone"></dd>
-            <dt>Email:<span id="signupEmailCheck"></span></dt>
-            <dd><input type="email" name="signemail" placeholder="Email" id="signupEmail"></dd>
-            <dt>Password:<span id="signupPassCheck"></span></dt>
-            <dd><input type="password" name="signPass" placeholder="passoword" id="signupPass" max="10"></dd>
-            <dt><button type="button" id="signupButton">Sign Up</button></dt>
-        </dl>
+          <form action="sql/signupSQL.php" method="post">
+            <h2>Sign Up</h2>
+            <dl>
+              <dt>First name:<span id="signupFnameCheck"></span></dt>
+              <dd><input type="text" name="signfname" placeholder="username" id="signupUser"></dd>
+              <dt>Last name:<span id="signupLnameCheck"></span></dt>
+              <dd><input type="text" name="signlname" placeholder="username" id="signupUser"></dd>
+              <dt>Phone:<span id="signupPhoneCheck"></span></dt>
+              <dd><input type="text" name="signphone" placeholder="Phone number" id="signupPhone"></dd>
+              <dt>Email:<span id="signupEmailCheck"></span></dt>
+              <dd><input type="email" name="signemail" placeholder="Email" id="signupEmail"></dd>
+              <dt>Password:<span id="signupPassCheck"></span></dt>
+              <dd><input type="password" name="signPass" placeholder="passoword" id="signupPass" max="10"></dd>
+              <dt><button type="submit" id="signupButton" name="signupButton">Sign Up</button></dt>
+          </dl>
+        </form>
       </div>
     </div>
 
     <div id="loginModelWrapper">
       <div id="loginModel">
-        <dl>
           <div id="closeLogin" class="closeButton">
             <i class="glyphicon glyphicon-remove"></i>
           </div>
-          <h2>Login</h2>
-            <dt>Username or Email:<span id="loginUserCheck" class="userCheck"></span></dt>
-            <dd><input type="text" name="user" placeholder="username or email" id="loginUser"></dd>
-            <dt>Password:</dt>
-            <dd><input type="password" name="password" placeholder="passoword" id="loginPass"><span class="passCheck"></span></dd>
-            <dd><input type="checkbox" name="cookie" id="cookie"> Save?</dd>
-            <dt><button type="submit" id="loginButton">Login</button></dt>
-        </dl>
+          <form action="sql/loginSQL.php" method="post">
+            <h2>Login</h2>
+            <dl>
+              <dt>Phone or Email:<span id="loginUserCheck" class="userCheck"></span></dt>
+              <dd><input type="text" name="user" placeholder="phone or email" id="loginUser"></dd>
+              <dt>Password:</dt>
+              <dd><input type="password" name="password" placeholder="passoword" id="loginPass"><span class="passCheck"></span></dd>
+              <dd><input type="checkbox" name="cookie" id="cookie"> Save?</dd>
+              <dt><button type="submit" id="loginButton">Login</button></dt>
+            </dl>
+          </form>
       </div>
     </div>
   </body>

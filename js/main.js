@@ -4,9 +4,20 @@ $(document).ready(function(){
   $(document).on("click", ".signupOpen", function(){
     $("#signupModelWrapper").fadeIn(500);
   })
-  $(document).on("click", "#closeSignup", function(){    
+  $(document).on("click", "#closeSignup", function(){
     $("#signupModelWrapper").fadeOut(500);
   })
+  var modalSignup = document.getElementById("signupModelWrapper");
+  $(document).on("click", window, function(){
+    if(event.target == modalSignup){
+      $("#signupModelWrapper").fadeOut(500);
+    }
+  })
+  // window.onclick = function(event){
+  //   if(event.target == modalSignup){
+  //     $("#signupModelWrapper").fadeOut(500);
+  //   }
+  // }
 
   $(document).on("click", ".loginOpen", function(){
     $("#loginModelWrapper").fadeIn(500);
@@ -14,6 +25,12 @@ $(document).ready(function(){
   $("#closeLogin").click(function(){
     $("#loginModelWrapper").fadeOut(500);
   })
+  var modalLogin = document.getElementById("loginModelWrapper");
+  window.onclick = function(event) {
+    if (event.target == modalLogin) {
+        $("#loginModelWrapper").fadeOut(500);
+    }
+}
 
 
   $("#openMenubar").click(function(){
@@ -112,23 +129,22 @@ $(document).ready(function(){
         $("#signupPassCheck").html("required").addClass("required");
       }
     }
-    else
-    {
-      alert("ff");
-      var register = "register";
-      $.ajax({
-        type: "POST",
-        url: "sql/signupSQL.php",
-        dataType: "text",
-        data: {register:register, fname:fname, lname:lname, phone:phone, email:email, password:password},
-        beforesend: function(){
-          $("#signupModel").html("loading....");
-        },
-        success: function(result){
-          $("#signupModel").html(result);
-        }
-      });
-    }
+    // else
+    // {
+    //   var register = "register";
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "sql/signupSQL.php",
+    //     dataType: "text",
+    //     data: {register:register, fname:fname, lname:lname, phone:phone, email:email, password:password},
+    //     beforesend: function(){
+    //       $("#signupModel").html("loading....");
+    //     },
+    //     success: function(result){
+    //       $("#signupModel").html(result).fadeIn(500);
+    //     }
+    //   });
+    // }
   })
 
   $("input[name='signphone']").focusout(function(){
@@ -183,5 +199,30 @@ $(document).ready(function(){
       }
   })
 
+  // $(document).on("click", "input[name='signupButton']", function(){
+  //   var signupButton = "signupButton";
+  //   var name = $("input[name='signupNameFinal']").val();
+  //   var phone = $("input[name='signupPhoneFinal']").val();
+  //   var email = $("input[name='signupEmailFinal']").val();
+  //   var password = $("input[name='signupPasswordFinal']").val();
+  //   $.ajax({
+  //     url: 'sql/signupSQL.php',
+  //     type: "POST",
+  //     dataType: "text",
+  //     data: {signupButton:signupButton, name:name, phone:phone, email:email, password:password},
+  //     beforesend: function(){
+  //       $("#signupModel").html("checking...");
+  //     },
+  //     success: function(result){
+  //       $("#signupModel").html(result);
+  //     }
+  //   })
+  // })
 
+// -----------------------------------------------------
+// loged in
+
+$(".signout").click(function(){
+  window.open("../sql/logoutSQL.php", "_self");
+})
 })

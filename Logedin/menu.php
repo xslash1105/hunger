@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$user = $_SESSION["name"];
+?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -29,7 +33,7 @@
      ?>
     <header>
       <div id="headerUser">
-        <h3><?php echo "WELCOME Masa"?></h3>
+        <h3><?php echo "WELCOME ".$user?></h3>
       </div>
       <div id="headerTitle">
         <h3><a href="main.php">HUNGER</a></h3>
@@ -40,7 +44,7 @@
           <li class="deliveryOpen">Delivery</li>
           <li class="couponOpen">Coupon</li>
           <li class="signupOpen">Settings</li>
-          <li class="signupOpen">Log out</li>
+          <li class="signout">Log out</li>
         </ul>
       </div>
         <i id="openMenubar" class="glyphicon glyphicon-menu-hamburger"></i>
