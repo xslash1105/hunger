@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+include("sql/connection.php");
+include("storeShow.php");
+ ?>
 <html>
   <head>
     <meta charset="utf-8">

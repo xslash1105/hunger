@@ -17,6 +17,26 @@
         <div id="couponRecommendInfo">
           <h2 class="title"><span class="companyColor1">H</span><span class="companyColor2">UNGE</span><span class="companyColor1">R</span>'s Recommendation's <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h2>
           <?php
+          $couponRec = "SELECT * FROM coupon ORDER BY recommend DESC limit 4";
+          $couponRecQuery = mysqli_query($con, $couponRec);
+          if(mysqli_num_rows($couponRecQuery)>0){
+            static $num = 0;
+            while($couponRecArray = mysqli_fetch_array($couponRecQuery)){
+              $name = $couponRecArray["name"];
+              $img = $couponRecArray["img"];
+              $price = mysqli_fetch_array($couponRecArray["price"]);
+              $discount = getDiscount($price[1], $price[2]);
+              ?>
+              <div class="eachSelection">
+                <div style="background: url('<?php echo $img ?>'); background-size:cover;" class="infoImg" alt="<?php echo $name ?>">
+                  <h4><?php echo $discount ?>%OFF!</h4>
+                </div>
+              </div>
+              <?php
+            }
+          }
+           ?>
+          <!-- <?php
           for($img=1; $img<=4; $img++){
               ?>
               <div class="eachSelection">
@@ -26,9 +46,38 @@
               </div>
               <?php
           }
-           ?>
-           <h2 class="title">Best Discount's <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h2>
+           ?> -->
+           <h2 class="title">Best Discount's <small><a href="checkAll.php?bestDiscount=BestDiscount">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h2>
            <?php
+           $couponBest = "SELECT * FROM coupon";
+           $couponBestQuery = mysqli_query($con, $couponBest);
+           static $num = 0;
+           while($couponArray = mysqli_fetch_array($couponBestQuery)){
+             $id = $couponArray["id"];
+             $name = $couponArray["name"];
+             $img = $couponArray["img"];
+             $price = mysqli_fetch_array($couponArray["price"]);
+             $discount = getDiscount($price[1], $price[2]);
+             if($discount>15){
+               ?>
+               <a href="detailCoupon.php?id=<?php echo $id ?>">
+                 <div class="eachSelection">
+                   <div style="background: url('img/<?php echo $img?>'); background-size:cover;" class="infoImg" alt="<?php echo $name ?>">
+                     <h4><?php echo $discount ?>%OFF!</h4>
+                   </div>
+                 </div>
+               </a>
+               <?php
+               $num++;
+             }else{
+               continue;
+             }
+             if($num>=3){
+               break;
+             }
+           }
+            ?>
+           <!-- <?php
            for($img=count($image)-1; $img>count($image)-5; $img--){
                ?>
                <div class="eachSelection">
@@ -38,7 +87,7 @@
                </div>
                <?php
            }
-            ?>
+            ?> -->
         </div><!-- couponRecommendInfo -->
         <div id="couponSearchWrapper">
           <h2 class="title">Search Your Coupon</h2>
@@ -96,8 +145,27 @@
       <div class="otherInfoWrapper">
         <h2 class="title">New Coupon Information <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h2>
         <?php
+        $couponNew = "SELECT * FROM coupon ORDER BY date DESC limit 4";
+        $couponNewQuery = mysqli_query($con, $couponNew);
+        while($couponNewArray = mysqli_fetch_array($couponNewQuery)){
+          $id = $couponNewArray["id"];
+          $name = $couponNewArray["name"];
+          $img = $couponNewArray["img"];
+          $price = mysqli_fetch_array($couponNewArray["price"]);
+          $discount = getDiscount($price[1], $price[2]);
+          ?>
+          <a href="detailCoupon.php?id=<?php echo $id ?>">
+            <div class="eachSelection">
+              <div style="background: url('img/<?php echo $img ?>'); background-size:cover;" class="infoImg" alt="<?php echo $name ?>">
+                <h4><?php echo $discount ?>%OFF!</h4>
+              </div>
+            </div>
+          </a>
+          <?php
+        }
+         ?>
+        <!-- <?php
         for($img=count($image)-1; $img>count($image)-5; $img--){
-
           ?>
           <div class="eachSelection">
             <div style="background: url('img/<?php echo $image[$img]?>'); background-size:cover;" class="infoImg">
@@ -106,7 +174,7 @@
           </div>
           <?php
         }
-         ?>
+         ?> -->
       </div>
       <div id="mediumCouponSearchWrapper">
         <h2 class="title">Search Your Coupon</h2>
