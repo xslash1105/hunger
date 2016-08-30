@@ -182,6 +182,10 @@
         <div class="otherInfoWrapper">
           <h2 class="title"><span class="companyColor1">H</span><span class="companyColor2">UNGE</span><span class="companyColor1">R</span>'s Recommendation's <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h2>
           <?php
+          $deliveryRec = getOrderByDesc("delivery", "recommend");
+          showEachName($deliveryRec);
+           ?>
+          <!-- <?php
           for($img=0; $img<4; $img++){
 
             ?>
@@ -192,11 +196,15 @@
             </div>
             <?php
           }
-           ?>
+           ?> -->
         </div><!-- otherInfoWrapper -->
         <div class="otherInfoWrapper">
           <h2 class="title">Popular Delivery Information <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h2>
           <?php
+          $popularQuery = getOrderByDesc("delivery", "orderNum");
+          showEachName($popularQuery);
+           ?>
+          <!-- <?php
           for($img=count($image)-1; $img>count($image)-5; $img--){
 
             ?>
@@ -207,7 +215,7 @@
             </div>
             <?php
           }
-           ?>
+           ?> -->
         </div><!-- otherInfoWrapper -->
       </div><!-- mainContainer -->
     </div><!-- mainBackgrondContainer -->

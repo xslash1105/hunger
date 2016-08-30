@@ -125,16 +125,9 @@
         <div id="eachResturauntRecommend">
           <h2 class="title"><span class="companyColor1">H</span><span class="companyColor2">UNGU</span><span class="companyColor1">R</span>'s Recommendation's <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h2>
           <?php
-          for($i=1; $i<=4; $i++){
-            ?>
-            <div class="eachRecommend">
-              <div style="background: url('img/<?php echo $image[$i]?>'); background-size:cover;" class="infoImg">
-                <h4><?php echo $i ?>!</h4>
-              </div>
-            </div>
-            <?php
-          } ?>
-
+          $resturauntRec = getOrderByDesc("resturaunt", "recommend");
+          showEachLarge($resturauntRec);
+           ?>
         </div><!-- eachResturauntRecommend -->
         <div id="searchResturauntWrapper">
           <h2 class="title">Where do you want to go?</h2>
@@ -193,29 +186,15 @@
         <div class="allEachWrapper">
           <h3 class="title">Italian <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h3>
           <?php
-          for($i=1; $i<=4; $i++){
-            ?>
-            <div class="eachSelection">
-              <div style="background: url('img/<?php echo $image[$i]?>'); background-size:cover;" class="infoImg">
-                <h4><?php echo $i ?>!</h4>
-              </div>
-            </div>
-            <?php
-          }
+          $resturauntCat = getSelected("resturaunt", "category", "italian");
+          showEachName($resturauntCat);
            ?>
          </div><!-- eachresturauntCategory -->
          <div class="allEachWrapper">
            <h3 class="title">Japanese <small><a href="">check all<i class="glyphicon glyphicon-chevron-right"></i></a></small></h3>
            <?php
-           for($i=1; $i<=4; $i++){
-             ?>
-             <div class="eachSelection">
-               <div style="background: url('img/japanese.jpeg') no-repeat; background-size: cover" class="infoImg">
-                 <h4>Kiwami</h4>
-               </div>
-             </div>
-             <?php
-           }
+           $resturauntCat = getSelected("resturaunt", "category", "italian");
+           showEachName($resturauntCat);
             ?>
           </div><!-- eachresturauntCategory -->
       </div><!-- resturauntCategory -->
